@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<title>add</title>
+
+</head>
+
+<body>
+<h3>Add A Customer</h3>
+
+<hr>
+
+
+<form action="#" th:action="@{/admin/saveCustomer}" th:object="${customer}" method="post">
+		
+		<input type="hidden" th:field="*{id}" />
+	
+	<table>
+
+		<tr>
+			<td>First Name</td>
+			<td><input type="text" th:field="*{firstName}" /></td>
+		</tr>
+		
+		<tr>
+			<td>Last Name</td>
+			<td><input type="text" th:field="*{lastName}" /></td>
+		</tr>		
+		
+		<tr>
+			<td>Email</td>
+			<td><input type="text" th:field="*{email}" /></td>
+		</tr>
+		
+		<tr>
+			<td>Age</td>
+			<td><input type="text" th:field="*{age}" /></td>
+		</tr>		
+	
+		<tr>
+			<td><input type="submit" value="Submit" /></td>
+		</tr>
+	</table>
+
+
+</form>
+
+</body>
+
+</html>

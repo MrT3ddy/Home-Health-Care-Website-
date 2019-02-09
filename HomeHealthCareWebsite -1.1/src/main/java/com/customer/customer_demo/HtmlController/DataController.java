@@ -15,13 +15,23 @@ import com.customer.customer_demo.customerEntity.Customer;
 import com.customer.customer_demo.session.CustomerServiceLayer;
 
 @Controller
-@RequestMapping("/admin")
+@RequestMapping("/view")
 public class DataController {
 	
 	@Autowired
 	private CustomerServiceLayer cs;
+	@GetMapping("/user/listed")
+	public String userViewList(Model mod){
+		
+		List<Customer> cus = cs.findAll();
+		
+		mod.addAttribute("customers", cus);
+		
+		return "list-customersUser.html";
+		
+	}
 	
-	@GetMapping("/listed")
+	@GetMapping("/admin/listed")
 	public String showCustomers(Model mod) {
 		
 		List<Customer> cus = cs.findAll();
@@ -30,14 +40,14 @@ public class DataController {
 		
 		return "list-customers.html";
 	}
-	@PostMapping("/saveCustomer")
+	@PostMapping("/admin/saveCustomer")
 	public String saveCustomer(@ModelAttribute("customer") Customer cus) {
 		cs.save(cus);
 		
 		return "redirect:/admin/listed";
 	}
 	
-	@RequestMapping("/addForm")
+	@RequestMapping("/admin/addForm")
 	public String deleteCustomer(Model mod) {
 		
 		Customer cus = new Customer();
@@ -47,7 +57,7 @@ public class DataController {
 		return "Add_Update_customer.html";
 	}
 	
-	@RequestMapping("/updateForm/{id}")
+	@RequestMapping("/admin/updateForm/{id}")
 	public String updateCustomer(@PathVariable("id") int id, Model mod) {
 		
 		Customer cus = cs.findById(id);
@@ -58,7 +68,7 @@ public class DataController {
 		
 	}
 	
-	@RequestMapping("/deleteForm/{id}")
+	@RequestMapping("/admin/deleteForm/{id}")
 	public String deleteCustomer(@PathVariable int id) {
 		
 		cs.delete(id);

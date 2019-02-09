@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymleaf.org">
 
@@ -10,10 +11,21 @@
 
 <body>
 <h1>Welcome!  - PlaceHolder Company</h1>
+
+
 <hr>
 
 
-<a href="/admin/listed">Customer List Manipulation</a>
+<a href="view/admin/listed">Customer List Manipulation || ADMINS</a>
+<br><br>
+<a href="view/user/listed">Customer List || EMPLOYEES</a>
+
+<br><br>
+
+	<form th:action="@{/logout}" method="post">
+		<input type="submit" value="Logout" />
+	
+	</form>
 
 
 

@@ -13,8 +13,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	public void configure(HttpSecurity httpSecurity) throws Exception {
 		httpSecurity.authorizeRequests()
-			.antMatchers("/admin/**").hasRole("USER")
-			.antMatchers("/api/**").hasRole("USER")
+			.antMatchers("/view/admin/*").hasRole("ADMIN")
+			.antMatchers("/view/user/*").hasRole("USER")
+			.antMatchers("/api/**").hasRole("ADMIN")
 			.and()
 			.formLogin();
 			
@@ -24,6 +25,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 		auth
 			.inMemoryAuthentication()
-			.withUser("test").password("{noop}test").roles("USER");
+			.withUser("test").password("{noop}test").roles("USER", "ADMIN");
+			auth.inMemoryAuthentication().withUser("low").password("{noop}low").roles("USER");
+		
+		
 	}
 }

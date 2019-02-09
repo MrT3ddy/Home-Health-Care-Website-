@@ -19,31 +19,27 @@
 			<th>Last Name</th>
 			<th>Email</th>
 			<th>Age</th>
-			<th>Delete</th>
-			<th>Update</th>
 		</tr>
 
+	
 		<tr th:each="customer : ${customers}">
 			<td th:text="${customer.firstName}"></td>
 			<td th:text="${customer.lastName}"></td>
 			<td th:text="${customer.email}"></td>
 			<td th:text="${customer.age}"></td>
 			
-			<td> <a th:href="@{'/view/admin/deleteForm/' + ${customer.id}}">Delete</a></td>
-			<td> <a th:href="@{'/view/admin/updateForm/' + ${customer.id}}">Update</a>
 		</tr>
 
 </table>
 <hr>
-<a href="/view/admin/addForm">Add a Customer</a>
-<br><br>
-<a href="/">Back to Home page</a>
+<br><br><br>
+<a href="/">Back to Home page</a> 
+
+<br>
 
 	<form th:action="@{/logout}" method="post">
 		<input type="submit" value="Logout" />
-
 	</form>
-
 
 
 </body>

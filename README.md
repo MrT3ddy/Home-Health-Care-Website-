@@ -2,7 +2,7 @@
 Customer Manager
 
 __________________________________________________________________________________________________________________________________________
-Technologies used - Spring MVC, Spring Security, Spring Boot, DevTools, Maven, Hibernate (JPA), MySQL
+Technologies used - Java, Spring MVC, Spring Security, Spring Boot, DevTools, Maven, Hibernate (JPA), MySQL
 
 IDE - Eclipse JEE
 
